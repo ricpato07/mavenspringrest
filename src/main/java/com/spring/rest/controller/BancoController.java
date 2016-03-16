@@ -61,13 +61,12 @@ public class BancoController {
         return mapper.writeValueAsString(new ResponseEntity(HttpStatus.METHOD_FAILURE));
     }
 
-    @RequestMapping(value = "/bancos/{id}", method = RequestMethod.GET,
-            headers = "Accept=application/xml,application/json")
+    @RequestMapping(value = "/bancos/{id}", method = RequestMethod.GET)
+            //headers = "Accept=application/xml,application/json")
     @ResponseBody
-    //headers = "Accept=application/xml,application/json"
     private String get(@PathVariable("id") int id) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        System.out.println("GET method id");
+        System.out.println("GET method id:"+id);
         try {
             CatBancos result = bancoService.get(id);
             if (result != null) {
